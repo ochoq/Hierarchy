@@ -1,0 +1,2 @@
+alter table HIERARCHY_TEAM add constraint FK_HIERARCHY_TEAM_ON_PARENT foreign key (PARENT_ID) references HIERARCHY_TEAM(ID);
+create index IDX_HIERARCHY_TEAM_ON_PARENT on HIERARCHY_TEAM (PARENT_ID);

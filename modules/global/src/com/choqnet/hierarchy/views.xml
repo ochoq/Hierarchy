@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+
+    <view entity="hierarchy_Item" name="items" extends="_local">
+        <property name="parent" view="_minimal">
+            <property name="workload"/>
+            <property name="tag"/>
+            <property name="type"/>
+            <property name="q1"/>
+            <property name="q2"/>
+            <property name="q3"/>
+            <property name="q4"/>
+            <property name="smartID"/>
+            <property name="parent" view="_minimal"/>
+        </property>
+        <property name="team" view="_minimal">
+            <property name="fullName"/>
+            <property name="platform"/>
+            <property name="tribe"/>
+        </property>
+        <property name="dispatched"/>
+    </view>
+    <view entity="hierarchy_Capacity" name="capacities" extends="_local">
+        <property name="team" view="_minimal">
+            <property name="platform"/>
+            <property name="tribe"/>
+            <property name="name"/>
+        </property>
+    </view>
+</views>

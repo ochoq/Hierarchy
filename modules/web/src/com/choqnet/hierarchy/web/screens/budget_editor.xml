@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://budgetEditor.caption"
+        messagesPack="com.choqnet.hierarchy.web.screens">
+    <data>
+        <collection id="itemsDc" class="com.choqnet.hierarchy.entity.Item" view="items">
+            <loader id="itemsDl">
+                <query>
+                    <![CDATA[select e from hierarchy_Item e order by e.]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <layout width="100%" height="100%" expand="table">
+        <vbox width="100%" id="table"
+              expand="itemsTable"
+              spacing="true">
+            <treeDataGrid id="itemsTable"
+                          height="100%" width="100%"
+                          hierarchyProperty="parent"
+                          selectionMode="SINGLE"
+                          sortable="true"
+                          dataContainer="itemsDc">
+                <actions>
+                    <action id="excel" type="excel"/>
+                    <action id="refresh" type="refresh"/>
+                </actions>
+                <buttonsPanel alwaysVisible="true">
+                    <label value="Budget year" />
+                    <lookupField id="lkpYear"
+                                 align="MIDDLE_CENTER"
+                                 stylename="roundFrame" />
+                    <button id="itemsTableExcelBtn" action="itemsTable.excel" stylename="myButton"/>
+                    <button id="itemsTableRefreshBtn" action="itemsTable.refresh" stylename="myButton"/>
+                    <button id="tempBtn" caption="Generate data" invoke="onTempBtnClick" visible="true"/>
+                    <button id="btnClose" caption="Close All" stylename="myButton" align="MIDDLE_RIGHT"
+                            invoke="onBtnCloseClick"/>
+                    <button id="btnIPRB" caption="Level IPRBs" stylename="myButton" align="MIDDLE_RIGHT"
+                            invoke="onBtnIPRBClick"/>
+                    <button id="btnRoadmap" caption="Level Roadmaps" stylename="myButton" align="MIDDLE_RIGHT"
+                            invoke="onBtnRoadmapClick"/>
+                    <button id="btnOPen" caption="Show All" stylename="myButton" align="MIDDLE_RIGHT"
+                            invoke="onBtnOPenClick"/>
+                </buttonsPanel>
+                <columns>
+                    <column id="empty" property="empty" caption=""/>
+                </columns>
+            </treeDataGrid>
+
+        </vbox>
+    </layout>
+</window>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://reconnect.caption"
+        messagesPack="com.choqnet.hierarchy.web.screens.details">
+    <layout spacing="true">
+        <label id="lblHeader" stylename="h1"/>
+        <label id="lblSubHeader" stylename="h2"/>
+        <label id="lblCurrentParent"/>
+        <lookupField id="lkpItem" nullOptionVisible="false" width="100%" stylename="roundFrame"/>
+        <hbox spacing="true" align="BOTTOM_RIGHT">
+            <button stylename="myButton" id="btnEscape" caption="Cancel" icon="DIALOG_CANCEL"/>
+            <button stylename="myButton" id="btnConnect" caption="Move to" icon="CODE_FORK"/>
+        </hbox>
+    </layout>
+</window>

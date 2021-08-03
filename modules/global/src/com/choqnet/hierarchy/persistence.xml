@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="Hierarchy" transaction-type="RESOURCE_LOCAL">
+
+        <class>com.choqnet.hierarchy.entity.Team</class>
+        <class>com.choqnet.hierarchy.entity.Item</class>
+        <class>com.choqnet.hierarchy.entity.Counter</class>
+        <class>com.choqnet.hierarchy.entity.Capacity</class>
+    </persistence-unit>
+</persistence>

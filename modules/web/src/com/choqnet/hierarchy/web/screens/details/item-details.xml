@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://itemDetails.caption"
+        messagesPack="com.choqnet.hierarchy.web.screens.details">
+    <data>
+        <collection id="itemsDc" class="com.choqnet.hierarchy.entity.Item" view="items">
+            <loader id="itemsDl">
+                <query>
+                    <![CDATA[select e from hierarchy_Item e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <layout expand="itemsTable">
+        <table id="itemsTable"
+                  width="100%"
+                  editable="true"
+                  dataContainer="itemsDc">
+            <actions>
+                <action id="bulkEdit" type="bulkEdit"/>
+            </actions>
+            <buttonsPanel alwaysVisible="true">
+                <button id="itemsTableBulkEditBtn" action="itemsTable.bulkEdit"/>
+            </buttonsPanel>
+            <columns>
+                <column id="name" editable="true"/>
+                <column id="tag" editable="true"/>
+                <column id="workload"  editable="true"/>
+                <column id="q1" editable="true"/>
+                <column id="q2" editable="true"/>
+                <column id="q3" editable="true"/>
+                <column id="q4" editable="true"/>
+            </columns>
+        </table>
+
+    </layout>
+</window>

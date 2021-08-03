@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://teams.caption"
+        messagesPack="com.choqnet.hierarchy.web.screens" xmlns:chart="http://schemas.haulmont.com/charts/charts.xsd">
+    <data>
+        <collection id="teamsDc" class="com.choqnet.hierarchy.entity.Team">
+            <view extends="_local"/>
+            <loader id="teamsDl">
+                <query>
+                    <![CDATA[select e from hierarchy_Team e order by e.platform asc, e.tribe asc, e.name asc]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="capacitiesDc" class="com.choqnet.hierarchy.entity.Capacity" view="capacities">
+            <loader id="capacitiesDl">
+                <query>
+                    <![CDATA[select e from hierarchy_Capacity e]]>
+                </query>
+            </loader>
+        </collection>
+
+    </data>
+    <layout spacing="true" >
+        <split id="screen" width="100%" height="100%" orientation="vertical" pos="75">
+            <vbox expand="teamsTable" spacing="true"
+                  margin="true"
+                  width="100%" height="100%">
+                <filter id="flt"
+                            dataLoader="teamsDl">
+                    <properties include=".*"/>
+                </filter>
+                <dataGrid id="teamsTable"
+                              width="100%"
+                              editorEnabled="true"
+                              editorBuffered="true"
+                              selectionMode="MULTI"
+                              dataContainer="teamsDc">
+                    <actions>
+
+                        <action id="bulkEdit" type="bulkEdit"/>
+
+                        <action id="excel" type="excel"/>
+                        <action id="refresh" type="refresh"/>
+                    </actions>
+                    <buttonsPanel alwaysVisible="true">
+                        <button id="teamsTableAddBtn" invoke="onTeamsTableAddBtnClick" icon="PLUS_CIRCLE" caption="Create team" stylename="myButton"/>
+                        <button id="teamsTableBulkEditBtn" action="teamsTable.bulkEdit" stylename="myButton"/>
+                        <button id="teamsTableExcelBtn" action="teamsTable.excel" stylename="myButton"/>
+                        <button id="teamsTableRefreshBtn" action="teamsTable.refresh" stylename="myButton"/>
+                    </buttonsPanel>
+                    <columns>
+                        <column id="platform" property="platform"/>
+                        <column id="tribe" property="tribe"/>
+                        <column id="name" property="name"/>
+                        <column id="description" property="description"/>
+                    </columns>
+                </dataGrid>
+            </vbox>
+            <vbox id="capacityBox"
+                  expand="data"
+                  margin="true"
+                  spacing="true" height="100%"  width="100%">
+                <hbox spacing="true" id="capaHeader" align="MIDDLE_LEFT">
+                    <label id="lblTitle" stylename="h1"/>
+                    <lookupField id="lkpYear" stylename="roundFrame" nullOptionVisible="false"/>
+                </hbox>
+                <hbox width="100%" spacing="true" id="data">
+                    <vbox id="capacityDetails" expand="capacitiesTable">
+
+                        <dataGrid id="capacitiesTable"
+                                  height="100%" width="100%"
+                                  editorEnabled="true"
+                                  editorBuffered="true"
+                                  dataContainer="capacitiesDc">
+                            <columns>
+                                <column id="q1" property="q1"/>
+                                <column id="q2" property="q2"/>
+                                <column id="q3" property="q3"/>
+                                <column id="q4" property="q4"/>
+                            </columns>
+                        </dataGrid>
+                    </vbox>
+                    <vbox id="capacityPlan" width="100%" height="100%">
+                        <chart:serialChart
+                                height="100%" width="100%"
+                                categoryField="quarter"
+                                rotate="false"
+                                id="chart">
+                            <chart:categoryAxis
+                                forceShowField="quarter"
+                                labelRotation="0"/>
+                            <chart:valueAxes>
+                                <chart:axis
+                                    stackType="REGULAR"/>
+                            </chart:valueAxes>
+                            <chart:graphs>
+                                <chart:graph id="demand"
+                                             valueField="demand"
+                                             title="Demand"
+                                             balloonText="[[quarter]] [[title]]: [[value]]"
+                                             fillAlphas="0.6"
+                                             lineColor="#5F8CA0"
+                                             lineAlpha="0.9"
+                                             lineThickness="2"
+                                             type="COLUMN">
+                                    <chart:fillColors>
+                                        <chart:color value="#5F8CA0"/>
+                                    </chart:fillColors>
+                                </chart:graph>
+                                <chart:graph id="capacity"
+                                             valueField="capacity"
+                                             title="Capacity"
+                                             bulletBorderAlpha="1"
+                                             bulletAlpha="0.4"
+                                             lineColor="#B12769"
+                                             lineThickness="5"
+                                             bullet="ROUND"
+                                             balloonText="[[quarter]] [[title]]: [[value]]"
+                                             bulletSize="16"
+                                             type="LINE">
+                                    <chart:fillColors>
+                                        <chart:color value="#B12769"/>
+                                    </chart:fillColors>
+                                </chart:graph>
+                            </chart:graphs>
+                            <chart:legend markerType="CIRCLE"
+                                          position="BOTTOM"
+                                          fontSize="16"
+                                          valueText="title"/>
+                            <chart:export enabled="true"/>
+
+                        </chart:serialChart>
+                    </vbox>
+                </hbox>
+
+
+            </vbox>
+        </split>
+    </layout>
+</window>

@@ -1,0 +1,49 @@
+/* Define your theme modifications inside next mixin */
+@mixin com_choqnet_hierarchy-hover-ext {
+.title1 {
+    color:#FFFFFF;
+    background-color:#5f8ca0;
+    border-radius: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size:18px;
+    text-align:left;
+}
+
+.myButton {
+    border-radius: 15px;
+    background-image: none;
+}
+
+.roundFrame {
+    border-radius: 15px;
+}
+
+.roundFrameCenter {
+    border-radius: 15px;
+    background-color: #cccccc;
+    text-align: right;
+}
+
+.good {
+    color: #11AA11;
+}
+
+.bad {
+    color: #F72323;
+}
+
+.error1 {
+    color: #dbe2ef;
+    background-color:#d74b8c;
+    border-radius: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size:18px;
+    text-align:left;
+    }
+}

@@ -1,0 +1,32 @@
+@import "hover-defaults";
+@import "com.choqnet.hierarchy/hover-ext-defaults";
+@import "app-components";
+@import "com.choqnet.hierarchy/hover-ext";
+
+.hover {
+  // include auto-generated app components SCSS
+  @include app_components;
+
+  @include com_choqnet_hierarchy-hover-ext;
+
+.roadmap {
+    font-family: "Arial Black";
+    color: #278BA5;
+    font-weight: bold;
+}
+
+.iprb {
+    font-weight: bold;
+    color: #EE792B;
+    font-family: "Arial Black";
+}
+
+.root {
+    font-size: 36px;
+    color: #B12769;
+    font-family: "Arial Black";
+}
+
+
+
+}

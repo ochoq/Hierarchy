@@ -1,0 +1,5 @@
+@import "hover-ext";
+
+@mixin com_choqnet_hierarchy {
+  @include com_choqnet_hierarchy-hover-ext;
+}

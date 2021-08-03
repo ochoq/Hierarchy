@@ -1,0 +1,2 @@
+alter table HIERARCHY_ITEM add constraint FK_HIERARCHY_ITEM_ON_TEAM foreign key (TEAM_ID) references HIERARCHY_TEAM(ID);
+create index IDX_HIERARCHY_ITEM_ON_TEAM on HIERARCHY_ITEM (TEAM_ID);
